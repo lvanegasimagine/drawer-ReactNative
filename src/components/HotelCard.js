@@ -5,21 +5,29 @@ import {
   StyleSheet,
   Dimensions,
   ImageBackground,
+  Alert,
+  TouchableOpacity,
 } from "react-native";
 
 import IconLabel from "./IconLabel";
 
 const iconColor = "#6c5ce7";
 
-const HotelCard = ({ info }) => {
-  const { name, categories, country, price, distance, image } = info;
+const HotelCard = ({ info, navigation }) => {
+  const { id, name, categories, country, price, distance, image } = info;
+
+  const detailsCard = (id) => {
+    Alert.alert("Bienvenido a mi App", `${id}`, [{ text: "OK" }]);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
-        <ImageBackground style={styles.imageStyle} source={{ uri: image }}>
-          <Text style={styles.textPrice}>{price}</Text>
-        </ImageBackground>
+        <TouchableOpacity onPress={() => navigation.navigate("Details", info)}>
+          <ImageBackground style={styles.imageStyle} source={{ uri: image }}>
+            <Text style={styles.textPrice}>{price}</Text>
+          </ImageBackground>
+        </TouchableOpacity>
         <View style={styles.infoStyle}>
           <Text style={styles.titleStyle}>{name}</Text>
           <Text style={styles.categoryStyle}>{categories}</Text>

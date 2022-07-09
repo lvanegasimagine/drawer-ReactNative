@@ -53,6 +53,11 @@ const MenuItems = ({ navigation }) => {
           icon="profile"
           onPress={() => navigation.navigate("Profile")}
         />
+        <MenuButtonItem
+          text="Logout"
+          icon="logout"
+          onPress={() => navigation.navigate("Login")}
+        />
       </View>
     </DrawerContentScrollView>
   );
